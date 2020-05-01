@@ -33,7 +33,8 @@ const initMainWindow = () => {
 				width: 400,
 				height: 400,
 				// close with mainWindow
-				parent: mainWindow
+				parent: mainWindow,
+				frame: false
 			})
 
 			addTodoWindow.on('closed',() => {
@@ -45,7 +46,7 @@ const initMainWindow = () => {
 	// add todo from addTodoWindow
 	ipcMain.on('add-todo', (event, todo) => {
 		const updatedTodos = todosStore.addTodo(todo).todos;
-
+		addTodoWindow.close();
 		mainWindow.send('todos', updatedTodos)
 	})
 

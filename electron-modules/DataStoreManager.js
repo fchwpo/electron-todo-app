@@ -15,6 +15,7 @@ class DataStoreManager extends Store {
 	addTodo(todo){
 		this.todos = [...this.todos, todo]
 		console.log(this.todos);
+		this.saveTodos();
 		return this
 	}
 
